@@ -28,7 +28,7 @@ public class StringCalculator {
 
         int num=Integer.parseInt(n);
         if (num < 0) {
-            throw new IllegalArgumentException("Negative input!");
+            throw new IllegalArgumentException("Negative numbers not allowed!");
         }
         else {
             return num;
