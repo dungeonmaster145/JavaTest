@@ -1,14 +1,15 @@
-
 public class StringCalculator {
 
     public int Add(String n){
-        String numbers[]=n.split(",|\n");
+        String numbersLine = n.replaceAll("[^0-9]+", " ");
+        numbersLine=numbersLine.trim();
+        String[] arrOfStr = numbersLine.split(" ");
 
         if(n.isEmpty())
             return 0;
         else if(n.length()>1)
         {
-            return getSum(numbers);
+            return getSum(arrOfStr);
         }
         return StringToInt(n);
 
