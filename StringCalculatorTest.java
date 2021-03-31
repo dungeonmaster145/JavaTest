@@ -43,22 +43,29 @@ public class StringCalculatorTest {
     @Test
     public void threeNumbersDelimitedAnywayShouldBeSummed() {
         assertEquals(calculator.Add("100,100,100"), 300);
-        assertEquals(calculator.Add("59\n2\n30"), 89);
+        assertEquals(calculator.Add("59\n2\n30"), 91);
     }
 
     @Test
-    public void negativeInputReturnsException() {
+    public void negativeInputReturnsException(){
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Negative input!");
+        thrown.expectMessage("negatives not allowed");
         calculator.Add("-15");
         calculator.Add("-15,10\n-15");
     }
 
     @Test
+    public void specialCharacters(){
+
+        assertEquals(calculator.Add("//[***]\\n1***2***3"),6);
+        assertEquals(calculator.Add("//[*][%]\\n1*2%3"),6);
+    }
+    @Test
     public void numbersGreaterThan1000AreIgnored() {
         assertEquals(calculator.Add("5,125,1001"), 130);
         assertEquals(calculator.Add("14124,23\n40,1214"), 63);
     }
+
 
 
 }
